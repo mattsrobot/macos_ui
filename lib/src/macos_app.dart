@@ -42,14 +42,12 @@ class MacosApp extends StatefulWidget {
     super.key,
     this.navigatorKey,
     this.home,
-    Map<String, Widget Function(BuildContext)> this.routes =
-        const <String, WidgetBuilder>{},
+    Map<String, Widget Function(BuildContext)> this.routes = const <String, WidgetBuilder>{},
     this.initialRoute,
     this.onGenerateRoute,
     this.onGenerateInitialRoutes,
     this.onUnknownRoute,
-    List<NavigatorObserver> this.navigatorObservers =
-        const <NavigatorObserver>[],
+    List<NavigatorObserver> this.navigatorObservers = const <NavigatorObserver>[],
     this.builder,
     this.title = '',
     this.onGenerateTitle,
@@ -71,6 +69,7 @@ class MacosApp extends StatefulWidget {
     this.themeMode,
     this.theme,
     this.darkTheme,
+    this.cupertinoThemeData,
   })  : routeInformationProvider = null,
         routeInformationParser = null,
         routerDelegate = null,
@@ -106,6 +105,7 @@ class MacosApp extends StatefulWidget {
     this.themeMode,
     this.theme,
     this.darkTheme,
+    this.cupertinoThemeData,
   })  : assert(routerDelegate != null || routerConfig != null),
         assert(supportedLocales.isNotEmpty),
         navigatorObservers = null,
@@ -301,19 +301,20 @@ class MacosApp extends StatefulWidget {
   /// The style used if [themeMode] is [ThemeMode.light]
   final MacosThemeData? theme;
 
+  /// The cupertino themedata
+  final c.CupertinoThemeData? cupertinoThemeData;
+
   @override
   State<MacosApp> createState() => _MacosAppState();
 }
 
 class _MacosAppState extends State<MacosApp> {
-  bool get _usesRouter =>
-      widget.routerDelegate != null || widget.routerConfig != null;
+  bool get _usesRouter => widget.routerDelegate != null || widget.routerConfig != null;
 
   Widget _macosBuilder(BuildContext context, Widget? child) {
     final mode = widget.themeMode ?? ThemeMode.system;
     final platformBrightness = MediaQuery.platformBrightnessOf(context);
-    final useDarkTheme = mode == ThemeMode.dark ||
-        (mode == ThemeMode.system && platformBrightness == Brightness.dark);
+    final useDarkTheme = mode == ThemeMode.dark || (mode == ThemeMode.system && platformBrightness == Brightness.dark);
 
     late MacosThemeData theme;
     if (useDarkTheme) {
@@ -374,6 +375,7 @@ class _MacosAppState extends State<MacosApp> {
         shortcuts: widget.shortcuts,
         actions: widget.actions,
         scrollBehavior: widget.scrollBehavior,
+        theme: widget.cupertinoThemeData,
       );
     }
     return c.CupertinoApp(
@@ -403,6 +405,7 @@ class _MacosAppState extends State<MacosApp> {
       shortcuts: widget.shortcuts,
       actions: widget.actions,
       scrollBehavior: widget.scrollBehavior,
+      theme: widget.cupertinoThemeData,
     );
   }
 

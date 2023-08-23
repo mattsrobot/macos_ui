@@ -1,3 +1,7 @@
+This is a fork I use for zenshop adding minor changes.
+
+Use the official macos_ui (not this one!)
+
 # macos_ui
 
 Flutter widgets and themes implementing the current macOS design language.
@@ -7,7 +11,7 @@ Check out our **interactive widget gallery** online at https://macosui.github.io
 Guides, codelabs, and other documentation can be found at https://macosui.dev
 
 [![pub package](https://img.shields.io/pub/v/macos_ui.svg)](https://pub.dev/packages/macos_ui)
-[![pub package](https://img.shields.io/pub/publisher/macos_ui.svg)](https://pub.dev/packages/macos_ui)  
+[![pub package](https://img.shields.io/pub/publisher/macos_ui.svg)](https://pub.dev/packages/macos_ui)
 
 [![Flutter Analysis](https://github.com/GroovinChip/macos_ui/actions/workflows/flutter_analysis.yml/badge.svg?branch=stable)](https://github.com/GroovinChip/macos_ui/actions/workflows/flutter_analysis.yml)
 [![Pana Analysis](https://github.com/GroovinChip/macos_ui/actions/workflows/pana_analysis.yml/badge.svg)](https://github.com/GroovinChip/macos_ui/actions/workflows/pana_analysis.yml)
@@ -22,7 +26,7 @@ Guides, codelabs, and other documentation can be found at https://macosui.dev
 
 ### <img src="https://storage.googleapis.com/cms-storage-bucket/0dbfcc7a59cd1cf16282.png" height="14"/> Platform Compatibility
 
-pub.dev shows that `macos_ui` only supports macOS. This is because `macos_ui` calls some native code, and therefore 
+pub.dev shows that `macos_ui` only supports macOS. This is because `macos_ui` calls some native code, and therefore
 specifies macOS as a plugin platform in the `pubspec.yaml` file.
 
 `macos_ui` _technically_ will work on any platform that
@@ -38,7 +42,7 @@ The features of `macos_ui` that will _not_ work on platforms other than macOS du
 Since at this time Flutter does not allow UI elements to overflow the bounds of the window, popups are constrained to
 the available space.
 
-Therefore, if you are using widgets that create popups in your toolbar, like `ToolBarPopupButton`, you 
+Therefore, if you are using widgets that create popups in your toolbar, like `ToolBarPopupButton`, you
 should avoid allowing your application window to be resized below the height of your tallest popup.
 
 ## Contents
@@ -84,7 +88,7 @@ should avoid allowing your application window to be resized below the height of 
   - [MacosSwitch](#macosswitch)
   - [MacosSegmentedControl](#macossegmentedcontrol)
 </details>
-  
+
 <details>
 <summary>Dialogs & Sheets</summary>
 
@@ -146,10 +150,10 @@ should avoid allowing your application window to be resized below the height of 
 <img src="https://imgur.com/yFXsoSy.png" width="40%"/>
 
 It supports a `Sidebar` on the left, an optional `TitleBar` at the top, and the rest of the window is typically filled out
-with a `MacosScaffold`. 
+with a `MacosScaffold`.
 
 A scope for the `MacosWindow` is provided by `MacosWindowScope`.
-The sidebar can be toggled with `MacosWindowScope.of(context).toggleSidebar()`. **Please note** that you must wrap 
+The sidebar can be toggled with `MacosWindowScope.of(context).toggleSidebar()`. **Please note** that you must wrap
 your `MacosScaffold` in a `Builder` widget in order for this to work properly.
 
 <img src="https://imgur.com/IBbp5rN.gif" width="75%">
@@ -208,12 +212,12 @@ MacosWindow(
 
 The `MacosScaffold` is what you might call a "page".
 
-The scaffold has a `toolbar` property and a `children` property. `children` accepts a `ContentArea` widget and 
-multiple `ResizablePane` widgets. To catch navigation or routes below the scaffold, consider wrapping the 
-`MacosScaffold` in a [`CupertinoTabView`](https://api.flutter.dev/flutter/cupertino/CupertinoTabView-class.html). 
-By doing so, navigation inside the `MacosScaffold` will be displayed inside the `MacosScaffold` area instead of 
-covering the entire window. To push a route outside a `MacosScaffold` wrapped in a 
-[`CupertinoTabView`](https://api.flutter.dev/flutter/cupertino/CupertinoTabView-class.html), use the root navigator 
+The scaffold has a `toolbar` property and a `children` property. `children` accepts a `ContentArea` widget and
+multiple `ResizablePane` widgets. To catch navigation or routes below the scaffold, consider wrapping the
+`MacosScaffold` in a [`CupertinoTabView`](https://api.flutter.dev/flutter/cupertino/CupertinoTabView-class.html).
+By doing so, navigation inside the `MacosScaffold` will be displayed inside the `MacosScaffold` area instead of
+covering the entire window. To push a route outside a `MacosScaffold` wrapped in a
+[`CupertinoTabView`](https://api.flutter.dev/flutter/cupertino/CupertinoTabView-class.html), use the root navigator
 `Navigator.of(context, rootNavigator: true)`
 
 See the documentation for customizations and `ToolBar` examples.
@@ -265,9 +269,9 @@ In any other case, you should keep it as `NSWindowToolbarStyle.unified`.
 
 ## ToolBar
 
-Creates a toolbar in the `MacosScaffold`. The toolbar appears below the title bar (if present) of the macOS app or integrates with it, by using its `title` property. 
+Creates a toolbar in the `MacosScaffold`. The toolbar appears below the title bar (if present) of the macOS app or integrates with it, by using its `title` property.
 
-A toolbar provides convenient access to frequently used commands and features (toolbar items). Different routes of your app could have different toolbars. 
+A toolbar provides convenient access to frequently used commands and features (toolbar items). Different routes of your app could have different toolbars.
 
 Toolbar items include `ToolBarIconButton`, `ToolBarPulldownButton`, and `ToolBarSpacer` widgets, and should be provided via the `items` property. The action of every toolbar item should also be provided as a menu bar command of your app.
 
@@ -323,7 +327,7 @@ ToolBar(
 ),
 ```
 
-This builds this simple toolbar: 
+This builds this simple toolbar:
 <img src="https://imgur.com/BDUdQkj.png"/>
 
 Other toolbar examples:
@@ -357,8 +361,8 @@ CustomToolbarItem(
 ## `SliverToolBar`
 <img src="https://imgur.com/u4LDaxj.gif" width="75%"/>
 
-`SliverToolbar` is a variant of the standard `ToolBar`, with the key difference being that (as the name implies), it 
-is compatible with scrollable widgets like `CustomScrollView` and `NestedScrollView`. There are three additional 
+`SliverToolbar` is a variant of the standard `ToolBar`, with the key difference being that (as the name implies), it
+is compatible with scrollable widgets like `CustomScrollView` and `NestedScrollView`. There are three additional
 properties on `SliverToolBar`:
 * `pinned`, which determines if the toolbar should remain visible while scrolling
 * `floating`, which determines if the toolbar should become visible as soon as the use starts scrolling upwards
@@ -376,7 +380,7 @@ return CustomScrollView(
       pinned: true,
       toolbarOpacity: 0.75,
     ),
-    // Other slivers below  
+    // Other slivers below
   ],
 );
 ```
@@ -445,7 +449,7 @@ MacosTabView(
       child: Text('Tab 3'),
     ),
   ],
-),        
+),
 
 ```
 
@@ -468,8 +472,8 @@ MacosIcon(
 
 ## MacosCheckbox
 
-A checkbox is a type of button that lets the user choose between two opposite states, actions, or values. A selected 
-checkbox is considered on when it contains a checkmark and off when it's empty. A checkbox is almost always followed 
+A checkbox is a type of button that lets the user choose between two opposite states, actions, or values. A selected
+checkbox is considered on when it contains a checkmark and off when it's empty. A checkbox is almost always followed
 by a title unless it appears in a checklist. [Learn more](https://developer.apple.com/design/human-interface-guidelines/macos/buttons/checkboxes/)
 
 | Unchecked                                                                                                                   | Checked                                                                                                                 | Mixed                                                                                                              |
@@ -493,7 +497,7 @@ To make a checkbox in the `mixed` state, set `value` to `null`.
 
 ## HelpButton
 
-A help button appears within a view and opens app-specific help documentation when clicked. All help buttons are 
+A help button appears within a view and opens app-specific help documentation when clicked. All help buttons are
 circular, consistently sized buttons that contain a question mark icon. [Learn more](https://developer.apple.com/design/human-interface-guidelines/macos/buttons/help-buttons/)
 
 ![HelpButton Example](https://imgur.com/DlP7uLV.png)
@@ -508,13 +512,13 @@ HelpButton(
 )
 ```
 
-You can customize the help button appearance and behaviour using the `HelpButtonTheme`, but it's not recommended by 
+You can customize the help button appearance and behaviour using the `HelpButtonTheme`, but it's not recommended by
 apple to change help button's appearance.
 
 ## RadioButton
 
-A radio button is a small, circular button followed by a title. Typically presented in groups of two to five, radio 
-buttons provide the user a set of related but mutually exclusive choices. A radio button’s state is either on 
+A radio button is a small, circular button followed by a title. Typically presented in groups of two to five, radio
+buttons provide the user a set of related but mutually exclusive choices. A radio button’s state is either on
 (a filled circle) or off (an empty circle). [Learn more](https://developer.apple.com/design/human-interface-guidelines/macos/buttons/radio-buttons/)
 
 ![RadioButton Preview](https://imgur.com/HI0eQsU.png)
@@ -534,15 +538,15 @@ MacosRadioButton(
 
 ## PulldownButton
 
-A pull-down button (often referred to as a pull-down menu) is a type of pop-up button that, when clicked, displays a 
-menu containing a list of choices. The menu appears below the button. Once the menu is displayed onscreen, it remains 
-open until the user chooses a menu item, clicks outside of the menu, switches to another app, or quits the app; or 
+A pull-down button (often referred to as a pull-down menu) is a type of pop-up button that, when clicked, displays a
+menu containing a list of choices. The menu appears below the button. Once the menu is displayed onscreen, it remains
+open until the user chooses a menu item, clicks outside of the menu, switches to another app, or quits the app; or
 until the system displays an alert. [Learn more](https://developer.apple.com/design/human-interface-guidelines/macos/buttons/pull-down-buttons/)
 
-Use a pull-down button to present a list of commands. A pull-down button can either show a `title` or an `icon` to 
+Use a pull-down button to present a list of commands. A pull-down button can either show a `title` or an `icon` to
 describe the contents of the button's menu. If you use an icon, make sure it clearly communicates the button’s purpose.
 
-If `items` is null, the button will be disabled (greyed out). 
+If `items` is null, the button will be disabled (greyed out).
 
  A `title` or an `icon` must be provided, to be displayed as the  pull-down button's title, but not both at the same time.
 
@@ -562,7 +566,7 @@ Here's an example of how to create a basic pull-down button:
 MacosPulldownButton(
   title: "Actions",
   // Or provide an icon to use as title:
-  // icon: CupertinoIcons.ellipsis_circle, 
+  // icon: CupertinoIcons.ellipsis_circle,
   items: [
     MacosPulldownMenuItem(
       title: const Text('Save'),
@@ -584,21 +588,21 @@ MacosPulldownButton(
 
 ## PopupButton
 
-A pop-up button (often referred to as a pop-up menu) is a type of button that, when clicked, displays a menu containing 
-a list of mutually exclusive choices. The menu appears on top of the button. Like other types of menus, a pop-up 
-button’s menu can include separators and symbols like checkmarks. After the menu is revealed, it remains open until the 
-user chooses a menu item, clicks outside of the menu, switches to another app, or quits the app; or until the system 
+A pop-up button (often referred to as a pop-up menu) is a type of button that, when clicked, displays a menu containing
+a list of mutually exclusive choices. The menu appears on top of the button. Like other types of menus, a pop-up
+button’s menu can include separators and symbols like checkmarks. After the menu is revealed, it remains open until the
+user chooses a menu item, clicks outside of the menu, switches to another app, or quits the app; or until the system
 displays an alert. [Learn more](https://developer.apple.com/design/human-interface-guidelines/macos/buttons/pop-up-buttons/)
 
-The type `T` of the `MacosPopupButton` is the type of the value that each pop-up menu item represents. All the entries 
-in a given menu must represent values with consistent types. Typically, an `enum` is used. Each `MacosPopupMenuItem` 
+The type `T` of the `MacosPopupButton` is the type of the value that each pop-up menu item represents. All the entries
+in a given menu must represent values with consistent types. Typically, an `enum` is used. Each `MacosPopupMenuItem`
 in items must be specialized with that same type argument.
 
-The `onChanged` callback should update a state variable that defines the pop-up menu's value. It should also call 
+The `onChanged` callback should update a state variable that defines the pop-up menu's value. It should also call
 `State.setState` to rebuild the pop-up button with the new value.
 
-When there are menu items that cannot be displayed within the available menu constraints, a caret is shown at the top 
-or bottom of the open menu to signal that there are items that are not currently visible. 
+When there are menu items that cannot be displayed within the available menu constraints, a caret is shown at the top
+or bottom of the open menu to signal that there are items that are not currently visible.
 
 The menu can also be navigated with the up/down keys and an item selected with the Return key.
 
@@ -632,7 +636,7 @@ MacosPopupButton<String>(
 
 ## PushButton
 
-Push buttons are the standard button type in macOS. Push buttons contain text—not icons—and often open a separate window, dialog, or app so the user can 
+Push buttons are the standard button type in macOS. Push buttons contain text—not icons—and often open a separate window, dialog, or app so the user can
 complete a task. [Learn more](https://developer.apple.com/design/human-interface-guidelines/macos/buttons/push-buttons/)
 
 | Dark Theme                                 | Light Theme                                |
@@ -656,7 +660,7 @@ PushButton(
 
 ## MacosSwitch
 
-A switch (also known as a toggle) is a control that offers a binary choice between two mutually exclusive states — on and off. A switch shows that it's on when the 
+A switch (also known as a toggle) is a control that offers a binary choice between two mutually exclusive states — on and off. A switch shows that it's on when the
 accent color is visible and off when the switch appears colorless.
 
 The `ContolSize` enum can be passed to the `size` property to control the size of the switch. `MacosSwitch` supports the following
@@ -686,12 +690,12 @@ Learn more about switches [here](https://developer.apple.com/design/human-interf
 
 ## MacosSegmentedControl
 
-Displays one or more navigational tabs in a single horizontal group. Used by `MacosTabView` to navigate between the 
+Displays one or more navigational tabs in a single horizontal group. Used by `MacosTabView` to navigate between the
 different tabs of the tab bar.
 
 <img src="https://imgur.com/6fIkCMr.png"/>
 
-The typical usage of this widget is by `MacosTabView`, to control the navigation of its children. You do not need to 
+The typical usage of this widget is by `MacosTabView`, to control the navigation of its children. You do not need to
 specify a `MacosSegmentedControl` with your `MacosTabView`, as it is built by that widget.
 
 # Dialogs and Sheets
@@ -743,7 +747,7 @@ showMacosSheet(
 
 ## MacosTextField
 
-A text field is a rectangular area in which the user enters or edits one or more lines of text. A text field can 
+A text field is a rectangular area in which the user enters or edits one or more lines of text. A text field can
 contain plain or styled text.
 
 <img src="https://imgur.com/UzyMlcL.png" width="75%"/>
@@ -760,7 +764,7 @@ MacosTextField(
 
 A search field is a style of text field optimized for performing text-based searches in a large collection of values.
 
-When the user starts typing into the search field, a list of selectable results appears in an overlay below (or above) the field. 
+When the user starts typing into the search field, a list of selectable results appears in an overlay below (or above) the field.
 
 <img src="https://imgur.com/qbabwAW.png" width="75%"/>
 
@@ -788,8 +792,8 @@ Labels are a short description of what an element on the screen does.
 
 ## MacosTooltip
 
-Tooltips succinctly describe how to use controls without shifting people’s focus away from the primary interface. 
-Help tags appear when the user positions the pointer over a control for a few seconds. A tooltip remains visible for 
+Tooltips succinctly describe how to use controls without shifting people’s focus away from the primary interface.
+Help tags appear when the user positions the pointer over a control for a few seconds. A tooltip remains visible for
 10 seconds, or until the pointer moves away from the control.
 
 | Dark Theme                                 | Light Theme                                |
@@ -805,15 +809,15 @@ MacosTooltip(
 ),
 ```
 
-You can customize the tooltip the way you want by customizing the theme's `TooltipTheme`. A tooltip automatically adapts to its 
+You can customize the tooltip the way you want by customizing the theme's `TooltipTheme`. A tooltip automatically adapts to its
 environment, responding to touch and pointer events. To use a tooltip with a toolbar item, provide it with a `tooltipMessage` property.
 
 # Indicators
 
 ## Progress Indicators
 
-Don’t make people sit around staring at a static screen waiting for your app to load content or perform lengthy data 
-processing operations. Use progress indicators to let people know your app hasn't stalled and to give them some idea 
+Don’t make people sit around staring at a static screen waiting for your app to load content or perform lengthy data
+processing operations. Use progress indicators to let people know your app hasn't stalled and to give them some idea
 of how long they’ll be waiting.
 
 Progress indicators have two distinct styles:
@@ -821,7 +825,7 @@ Progress indicators have two distinct styles:
 - **Bar indicators**, more commonly known as progress bars, show progress in a horizontal bar.
 - **Spinning indicators** show progress in a circular form, either as a spinner or as a circle that fills in as progress continues.
 
-People don't interact with progress indicators; however, they are often accompanied by a button for canceling the 
+People don't interact with progress indicators; however, they are often accompanied by a button for canceling the
 corresponding operation. [Learn more](https://developer.apple.com/design/human-interface-guidelines/macos/indicators/progress-indicators/)
 
 ### ProgressCircle
@@ -858,15 +862,15 @@ ProgressBar(
 
 ## Level Indicators
 
-A level indicator graphically represents of a specific value within a range of numeric values. It’s similar to a 
-[slider](#slider) in purpose, but more visual and doesn’t contain a distinct control for selecting a value—clicking and 
-dragging across the level indicator itself to select a value is supported, however. A level indicator can also include 
-tick marks, making it easy for the user to pinpoint a specific value in the range. There are three different level 
+A level indicator graphically represents of a specific value within a range of numeric values. It’s similar to a
+[slider](#slider) in purpose, but more visual and doesn’t contain a distinct control for selecting a value—clicking and
+dragging across the level indicator itself to select a value is supported, however. A level indicator can also include
+tick marks, making it easy for the user to pinpoint a specific value in the range. There are three different level
 indicator styles, each with a different appearance, for communicating capacity, rating, and relevance.
 
 ### CapacityIndicator
 
-A capacity indicator illustrates the current level in relation to a finite capacity. Capacity indicators are often used 
+A capacity indicator illustrates the current level in relation to a finite capacity. Capacity indicators are often used
 when communicating factors like disk and battery usage. [Learn more](https://developer.apple.com/design/human-interface-guidelines/macos/indicators/level-indicators#capacity-indicators)
 
 <img src="https://imgur.com/U7hcCqJ.png" />
@@ -913,13 +917,13 @@ MacosSlider(
 
 ### RatingIndicator
 
-A rating indicator uses a series of horizontally arranged graphical symbols to communicate a ranking level. The default 
+A rating indicator uses a series of horizontally arranged graphical symbols to communicate a ranking level. The default
 symbol is a star.
 
 ![RatingIndicator Example](https://imgur.com/ySQBpL6.png)
 
-A rating indicator doesn’t display partial symbols—its value is rounded in order to display complete symbols only. 
-Within a rating indicator, symbols are always the same distance apart and don't expand or shrink to fit the control. 
+A rating indicator doesn’t display partial symbols—its value is rounded in order to display complete symbols only.
+Within a rating indicator, symbols are always the same distance apart and don't expand or shrink to fit the control.
 [Learn more](https://developer.apple.com/design/human-interface-guidelines/macos/indicators/level-indicators#rating-indicators)
 
 Here's an example of how to create an interactive rating indicator:
@@ -966,7 +970,7 @@ The following tokens are supported:
 * `YYYY`: year (0000-9999)
 * Any separator between tokens is preserved (e.g. `/`, `-`, `.`)
 
-The default format is `M/D/YYYY`. 
+The default format is `M/D/YYYY`.
 
 Example usage:
 ```dart
@@ -1006,7 +1010,7 @@ You can choose which mode to launch the picker in using the `ColorPickerMode` en
 
 🚨 This widget will not work on platforms other than macOS!
 
-Example usage: 
+Example usage:
 ```dart
 MacosColorWell(
   onColorSelected: (color) => debugPrint('$color'),
